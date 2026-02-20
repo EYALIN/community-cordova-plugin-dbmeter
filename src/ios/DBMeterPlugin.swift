@@ -194,7 +194,7 @@ import AVFoundation
                 let db = self.calculateDbLevel()
 
                 let pluginResult = CDVPluginResult(status: .ok, messageAs: db)
-                pluginResult?.setKeepCallbackAs(true)
+                pluginResult.setKeepCallbackAs(true)
                 self.commandDelegate!.send(pluginResult, callbackId: self.command.callbackId)
             }
         }

@@ -1,6 +1,6 @@
 {
   "name": "community-cordova-plugin-dbmeter",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "main": "./types/index.d.ts",
   "types": "./types/index.d.ts",
   "readme": "README.md",
