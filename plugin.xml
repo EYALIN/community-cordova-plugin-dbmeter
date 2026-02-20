@@ -1,37 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="community-cordova-plugin-dbmeter" version="2.2.0">
 
-  <name>DBMeter</name>
-  <license>Apache 2.0</license>
-  <description>Cordova DBMeter plugin</description>
-  <keywords>cordova,phonegap,volume,sound,audio,decibel</keywords>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="community-cordova-plugin-dbmeter"
+        version="2.3.1">
+    <name>Cordova Plugin DBMeter</name>
+    <description>A Cordova plugin to get decibel (dB) values from the device microphone</description>
+    <license>MIT</license>
+    <keywords>cordova,phonegap,volume,sound,audio,decibel,dbmeter,microphone,noise</keywords>
+    <repo>https://github.com/eyalin/community-cordova-plugin-dbmeter.git</repo>
+    <issue>https://github.com/eyalin/community-cordova-plugin-dbmeter/issues</issue>
 
-  <platform name="android">
-    <config-file target="AndroidManifest.xml" parent="/*">
-      <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    </config-file>
+    <!-- android -->
+    <platform name="android">
+        <js-module src="www/plugin.js" name="DBMeterPlugin">
+            <runs/>
+            <clobbers target="DBMeterPlugin" />
+        </js-module>
 
-    <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="DBMeter">
-        <param name="android-package" value="org.apache.cordova.dbmeter.DBMeter"/>
-      </feature>
-    </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.RECORD_AUDIO" />
+        </config-file>
 
-    <source-file src="src/android/DBMeter.java" target-dir="src/org/apache/cordova/dbmeter" />
-    <source-file src="src/android/PermissionHelper.java" target-dir="src/org/apache/cordova/dbmeter" />
-  </platform>
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="DBMeterPlugin">
+                <param name="android-package" value="dbmeterplugin.DBMeterPlugin" />
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
 
-  <platform name="ios">
-    <config-file target="config.xml" parent="/*">
-      <feature name="DBMeter">
-        <param name="ios-package" value="DBMeter" />
-      </feature>
-    </config-file>
+        <source-file src="src/android/DBMeterPlugin.java" target-dir="src/dbmeterplugin" />
+    </platform>
 
-    <source-file src="src/ios/DBMeter.swift" />
-  </platform>
+    <!-- ios -->
+    <platform name="ios">
+        <js-module src="www/plugin.js" name="DBMeterPlugin">
+            <runs/>
+            <clobbers target="DBMeterPlugin" />
+        </js-module>
 
-  <js-module src="dbmeter.js" name="DBMeter">
-    <clobbers target="DBMeter" />
-  </js-module>
+        <config-file target="config.xml" parent="/*">
+            <feature name="DBMeterPlugin">
+                <param name="ios-package" value="DBMeterPlugin" onload="true" />
+            </feature>
+        </config-file>
+
+        <source-file src="src/ios/DBMeterPlugin.swift" />
+    </platform>
 </plugin>
